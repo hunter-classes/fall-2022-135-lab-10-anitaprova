@@ -1,5 +1,6 @@
 #include <iostream>
-#include "funcs.h"
+#include "time.h"
+#include "movie.h"
 
 int main() {
 	std::cout << minutesSinceMidnight({0,30}) << std::endl;

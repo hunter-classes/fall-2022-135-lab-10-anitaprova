@@ -39,3 +39,12 @@ std::string getMovie(Movie mv){
 std::string getTimeSlot(TimeSlot ts) {
 	return getMovie(ts.movie) + " [starts at " + getTime(ts.startTime) + ", ends by " + getTime(addMinutes(ts.startTime, ts.movie.duration)) + "]"; 
 }
+
+TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie) {
+	TimeSlot nextTimeSlot = {nextMovie, addMinutes(ts.startTime, nextMovie.duration)};
+	return nextTimeSlot;
+}
+
+bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
+	return true;	
+}

@@ -24,6 +24,9 @@ int main() {
 	//TASK C
 	Movie movie1 = {"Back to the Future", COMEDY, 116};
 	Movie movie2 = {"Black Panther", ACTION, 134};
+	Movie movie3 = {"A Silent Voice", DRAMA, 130};
+	Movie movie4 = {"Your Name", DRAMA, 106};
+	Movie movie5 = {"Train to Busan", ACTION, 118};
 	
 	TimeSlot morning = {movie1, {9, 15}};  
 	TimeSlot daytime = {movie2, {12, 15}}; 
@@ -32,6 +35,11 @@ int main() {
 	std::cout << getTimeSlot(morning) << std::endl;
 	std::cout << getTimeSlot(daytime) << std::endl;	
 	std::cout << getTimeSlot(evening) << std::endl;
+
+	
+	//TASK D
+	TimeSlot t = {movie3, {14,10}};
+	std::cout << getTimeSlot(scheduleAfter(t, movie4)) << std::endl;
 
 	return 0;
 }

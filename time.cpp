@@ -5,7 +5,7 @@
 #include "timeslot_class.h"
 
 std::string getTime(Time time) {
-    return time.h + ":" + time.m;
+    return std::to_string(time.h) + ":" + std::to_string(time.m);
 }
 
 int minutesSinceMidnight(Time time) { 
@@ -17,17 +17,11 @@ int minutesUntil(Time earlier, Time later) {
 }
 
 Time addMinutes(Time time0, int min){
-	Time time1;
-	if(time0.m + min >= 60){
-		time1.h = time0.h + 1;
-		time1.m = (time0.m + min) - 60;
-	}
-	else{
-		time1.h = time0.h;
-		time1.m = time0.m + min;
-	}
-
-	return time1;
+	Time time = {0,0};
+	time.h = time0.h + ((time0.m+min)/60);
+	time.m = (time0.m+min)%60;
+	
+	return time;
 }
 
 std::string getMovie(Movie mv){
@@ -43,5 +37,5 @@ std::string getMovie(Movie mv){
 }
 
 std::string getTimeSlot(TimeSlot ts) {
-	return getMovie(ts.movie) + " [starts at " + getTime(ts.startTime) + "]"; 
+	return getMovie(ts.movie) + " [starts at " + getTime(ts.startTime) + ", ends by " + getTime(addMinutes(ts.startTime, ts.movie.duration)) + "]"; 
 }

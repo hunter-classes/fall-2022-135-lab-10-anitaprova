@@ -41,10 +41,30 @@ std::string getTimeSlot(TimeSlot ts) {
 }
 
 TimeSlot scheduleAfter(TimeSlot ts, Movie nextMovie) {
-	TimeSlot nextTimeSlot = {nextMovie, addMinutes(ts.startTime, nextMovie.duration)};
+	TimeSlot nextTimeSlot = {nextMovie, addMinutes(ts.startTime, ts.movie.duration)};
 	return nextTimeSlot;
 }
 
 bool timeOverlap(TimeSlot ts1, TimeSlot ts2){
-	return true;	
+	int d = 0; //interval between starting times
+	if(minutesUntil(ts1.startTime, ts2.startTime) > 0){ //if its positive then ts1 is earlier
+		d = minutesUntil(ts1.startTime, ts2.startTime);
+		if(ts1.movie.duration > d)
+		{
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	else{
+		d = minutesUntil(ts2.startTime, ts1.startTime);
+		if(ts2.movie.duration > d) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 }

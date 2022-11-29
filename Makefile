@@ -1,14 +1,18 @@
-main: main.o time.o
-	g++ -o main main.o time.o
+main: main.o time.o movie.o timeslot.o
+	g++ -o main main.o time.o movie.o timeslot.o
 
-main.o: main.cpp time.h time_class.h movie_class.h timeslot_class.h
+main.o: main.cpp time.h movie.h timeslot.h
 
-time.o: time.cpp time.h movie_class.h timeslot_class.h
+time.o: time.cpp time.h
 
-tests: tests.o time.o
-	g++ -o tests tests.o time.o
+movie.o: movie.cpp movie.h
 
-tests.o: tests.cpp doctest.h time.h
+timeslot.o: timeslot.cpp timeslot.h
+
+tests: tests.o time.o movie.o timeslot.o
+	g++ -o tests tests.o time.o movie.o timeslot.o
+
+tests.o: tests.cpp doctest.h time.h movie.h timeslot.h
 
 clean:
-	rm -f main main.o time.o
+	rm -f main tests main.o tests.o time.o movie.o timeslot.o

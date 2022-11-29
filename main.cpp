@@ -9,9 +9,8 @@ Creates a time, movie and timeslot class.
 
 #include <iostream>
 #include "time.h"
-#include "time_class.h"
-#include "movie_class.h"
-#include "timeslot_class.h"
+#include "movie.h"
+#include "timeslot.h"
 
 int main() {
 	//TASK A

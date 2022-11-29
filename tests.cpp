@@ -1,8 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "time.h"
-#include "movie_class.h"
-#include "timeslot_class.h"
+#include "movie.h"
+#include "timeslot.h"
 
 TEST_CASE("TASK A") {
 	CHECK(minutesSinceMidnight({11,59}) == 719);
